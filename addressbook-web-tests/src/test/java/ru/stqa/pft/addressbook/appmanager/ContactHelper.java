@@ -27,13 +27,25 @@ public class ContactHelper extends HelperBase {
         type(By.name("notes"), contactData.getNotes());
     }
 
-    public void type(By locator, String text) {
-        wd.findElement(locator).click();
-        wd.findElement(locator).clear();
-        wd.findElement(locator).sendKeys(text);
-    }
 
     public void initContactCreation() {
-        wd.findElement(By.linkText("add new")).click();
+        click(By.linkText("add new"));
     }
+
+    public void updateContact() {
+        click(By.xpath("//div[@id='content']/form[1]/input[22]"));
+    }
+
+    public void editContactField(ContactData contactData) {
+        type(By.name("firstname"), contactData.getName());
+    }
+
+    public void editContact() {
+        click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+    }
+
+    public void deleteContact() {
+        click(By.xpath("//div[@id='content']/form[2]/input[2]"));
+    }
+
 }
