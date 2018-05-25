@@ -1,7 +1,10 @@
 package ru.stqa.pft.addressbook.appmanager;
 
+import com.sun.org.apache.bcel.internal.generic.Select;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactHelper extends HelperBase {
@@ -14,7 +17,7 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
     }
 
-    public void fillContactForm(ContactData contactData) {
+    public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getName());
         type(By.name("middlename"), contactData.getPatronymic());
         type(By.name("lastname"), contactData.getSurname());
@@ -25,6 +28,13 @@ public class ContactHelper extends HelperBase {
         type(By.name("mobile"), contactData.getMobilephone());
         type(By.name("email"), contactData.getEmail());
         type(By.name("notes"), contactData.getNotes());
+
+        if (creation) {
+            new org.openqa.selenium.support.ui.Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+        } else {
+            Assert.assertFalse(isElementPresent(By.name("new_group")));
+        }
+
     }
 
 
@@ -50,6 +60,8 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//div[@id='content']/form[2]/input[2]"));
     }
 
-    public void selectContact() { click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[1]/input")); }
+    public void selectContact() {
+        click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[1]/input"));
+    }
 
 }
