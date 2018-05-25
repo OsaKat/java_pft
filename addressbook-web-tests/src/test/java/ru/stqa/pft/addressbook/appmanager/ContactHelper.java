@@ -64,4 +64,14 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[1]/input"));
     }
 
+
+    public void createContact(ContactData contact) {
+        initContactCreation();
+        fillContactForm(new ContactData("Иван", "Петрович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", "test1", "notesnotesnotes"), true);
+        submitContactCreation();
+    }
+
+    public boolean isThereAContact() {
+        return isElementPresent(By.name("selected[]"));
+    }
 }
