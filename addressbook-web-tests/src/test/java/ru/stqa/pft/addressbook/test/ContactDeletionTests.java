@@ -29,10 +29,14 @@ public class ContactDeletionTests extends TestBase {
             app.getContactHelper().createContact(new ContactData("Василий", "Иванович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", null,"notesnotesnotes"));
         }
         app.getNavigationHelper().gotoHomePage();
-        List<GroupData> before = app.getGroupHelper().getGroupList();
+        List<ContactData> before = app.getContactHelper().getContactList();
         app.getContactHelper().selectContact(0);
         app.getContactHelper().deleteContactfromHomePage();
-        List<GroupData> after = app.getGroupHelper().getGroupList();
+        List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() - 1);
+
+        before.remove(before.size() - 1);
+        Assert.assertEquals(before, after);
+
     }
 }
