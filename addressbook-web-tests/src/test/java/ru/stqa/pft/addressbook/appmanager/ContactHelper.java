@@ -29,7 +29,6 @@ public class ContactHelper extends HelperBase {
         type(By.name("home"), contactData.getHomephone());
         type(By.name("mobile"), contactData.getMobilephone());
         type(By.name("email"), contactData.getEmail());
-        type(By.name("notes"), contactData.getNotes());
 
         if (creation) {
             new org.openqa.selenium.support.ui.Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
@@ -66,9 +65,21 @@ public class ContactHelper extends HelperBase {
         wd.findElements(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[1]/input")).get(index).click();
     }
 
-    public void createContact() {
+    public void fillContactForm(ContactData contactData) {
+        type(By.name("firstname"), contactData.getName());
+        type(By.name("middlename"), contactData.getPatronymic());
+        type(By.name("lastname"), contactData.getSurname());
+        type(By.name("nickname"), contactData.getNick());
+        type(By.name("company"), contactData.getCompany());
+        type(By.name("address"), contactData.getAddress());
+        type(By.name("home"), contactData.getHomephone());
+        type(By.name("mobile"), contactData.getMobilephone());
+        type(By.name("email"), contactData.getEmail());
+    }
+
+    public void createContact(ContactData contact) {
         initContactCreation();
-        fillContactForm(new ContactData("Иван", "Петрович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", "test1", "notesnotesnotes"), true);
+        fillContactForm(contact,true);
         submitContactCreation();
     }
 
@@ -83,9 +94,11 @@ public class ContactHelper extends HelperBase {
     public List<ContactData> getContactList() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.tagName("entry"));
-        for (WebElement element : elements) {
-            String name = element.getText();
-            ContactData contact = new ContactData("Иван", "Петрович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", "test1", "notesnotesnotes");
+        for (WebElement element : elements){
+            String surname = element.findElement(By.xpath(".//td[2]")).getText();
+            String name = element.findElement(By.xpath(".//td[3]")).getText();
+            int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
+            ContactData contact = new ContactData("Иван", "Петрович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", "test1");
             contacts.add(contact);
         }
         return contacts;

@@ -9,10 +9,10 @@ import java.util.List;
 public class ContactDeletionTests extends TestBase {
 
     @Test
-    public void testContactDeletion () {
+    public void testContactDeletion() {
         app.getNavigationHelper().gotoHomePage();
         if (!app.getContactHelper().isThereAContact()) {
-            app.getContactHelper().createContact();
+            app.getContactHelper().createContact(new ContactData("Иван", "Петрович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", "test1"));
         }
         int before = app.getContactHelper().getContactCount();
         app.getContactHelper().selectContact(0);
@@ -23,21 +23,21 @@ public class ContactDeletionTests extends TestBase {
     }
 
     @Test
-    public void testContactDeletion2 () {
+    public void testContactDeletion2() {
         app.getNavigationHelper().gotoHomePage();
         if (! app.getContactHelper().isThereAContact()) {
-            app.getContactHelper().createContact();
+            app.getContactHelper().createContact(new ContactData("Иван", "Петрович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", "test1"));
             app.getNavigationHelper().gotoHomePage();
         }
         List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().selectContact(0);
+        app.getContactHelper().selectContact(before.size() - 1);
         app.getContactHelper().deleteContactfromHomePage();
         app.getNavigationHelper().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size() - 1);
 
-        before.remove(0);
-        Assert.assertEquals(before,after);
+        before.remove(before.size() - 1);
+        Assert.assertEquals(before, after);
 
     }
 }
