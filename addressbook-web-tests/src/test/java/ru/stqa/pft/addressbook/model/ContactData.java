@@ -10,32 +10,6 @@ public class ContactData {
     private final String company;
     private final String address;
     private final String homephone;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        ContactData that = (ContactData) o;
-        return Objects.equals(name, that.name) &&
-                Objects.equals(patronymic, that.patronymic) &&
-                Objects.equals(surname, that.surname);
-    }
-
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(name);
-    }
-
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "name='" + name + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", surname='" + surname + '\'' +
-                '}';
-    }
-
     private final String mobilephone;
     private final String email;
     private String group;
@@ -98,4 +72,28 @@ public class ContactData {
     public String getGroup() {
         return group;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactData that = (ContactData) o;
+        return Objects.equals(name, that.name) &&
+                Objects.equals(surname, that.surname);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(name, surname);
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                '}';
+    }
+
 }
