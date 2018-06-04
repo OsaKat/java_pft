@@ -62,7 +62,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void selectContact(int index) {
-        wd.findElements(By.xpath("//div/div[4]/form[2]/table/tbody/tr[2]/td[1]/input")).get(index).click();
+        wd.findElements(By.name("selected[]")).get(index).click();
     }
 
     public void fillContactForm(ContactData contactData) {

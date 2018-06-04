@@ -11,20 +11,6 @@ public class ContactDeletionTests extends TestBase {
     @Test
     public void testContactDeletion() {
         app.getNavigationHelper().gotoHomePage();
-        if (!app.getContactHelper().isThereAContact()) {
-            app.getContactHelper().createContact(new ContactData("Иван", "Петрович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", "test1"));
-        }
-        int before = app.getContactHelper().getContactCount();
-        app.getContactHelper().selectContact(0);
-        app.getContactHelper().editContact(0);
-        app.getContactHelper().deleteContactfromEditPage();
-        int after = app.getContactHelper().getContactCount();
-        Assert.assertEquals(after, before - 1);
-    }
-
-    @Test
-    public void testContactDeletion2() {
-        app.getNavigationHelper().gotoHomePage();
         if (! app.getContactHelper().isThereAContact()) {
             app.getContactHelper().createContact(new ContactData("Иван", "Петрович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", "test1"));
             app.getNavigationHelper().gotoHomePage();
