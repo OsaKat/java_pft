@@ -10,18 +10,18 @@ public class ContactModificationTests extends TestBase {
 
     @Test
     public void testContactModification() {
+        app.getNavigationHelper().gotoHomePage();
         if (!app.getContactHelper().isThereAContact()) {
             app.getContactHelper().createContact(new ContactData("Иван", "Петрович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", "test1"));
+            app.getNavigationHelper().gotoHomePage();
         }
-        app.getNavigationHelper().gotoHomePage();
         List<ContactData> before = app.getContactHelper().getContactList();
-        app.getContactHelper().editContact(0);
-        app.getContactHelper().fillContactForm(new ContactData("Василий", "Иванович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", null), false);
+        app.getContactHelper().editContact(before.size() - 1);
+        app.getContactHelper().fillContactForm(new ContactData("Петр", "Иванович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", null), false);
         app.getContactHelper().updateContact();
         app.getNavigationHelper().gotoHomePage();
         List<ContactData> after = app.getContactHelper().getContactList();
         Assert.assertEquals(after.size(), before.size());
     }
-
 
 }
