@@ -98,16 +98,15 @@ public class ContactData {
 
     @Override
     public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (surname != null ? surname.hashCode() : 0);
-        return result;
+
+        return Objects.hash(name, surname);
     }
 
     @Override
     public String toString() {
         return "ContactData{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 '}';
     }
