@@ -83,6 +83,7 @@ public class ContactHelper extends HelperBase {
         submitContactCreation();
     }
 
+
     public boolean isThereAContact() {
         return isElementPresent(By.name("selected[]"));
     }
