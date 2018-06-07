@@ -3,47 +3,75 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-    private int id;
-    private final String name;
-    private final String patronymic;
-    private final String surname;
-    private final String nick;
-    private final String company;
-    private final String address;
-    private final String homephone;
-    private final String mobilephone;
-    private final String email;
-    private final String group;
-
-    public ContactData(int id, String name, String patronymic, String surname, String nick, String company, String address, String homephone, String mobilephone, String email,String group) {
-        this.id = id;
-        this.name = name;
-        this.patronymic = patronymic;
-        this.surname = surname;
-        this.nick = nick;
-        this.company = company;
-        this.address = address;
-        this.homephone = homephone;
-        this.mobilephone = mobilephone;
-        this.email = email;
-        this.group = group;
-    }
-
-    public ContactData(String name, String patronymic, String surname, String nick, String company, String address, String homephone, String mobilephone, String email,String group) {
-        this.id = Integer.MAX_VALUE;;
-        this.name = name;
-        this.patronymic = patronymic;
-        this.surname = surname;
-        this.nick = nick;
-        this.company = company;
-        this.address = address;
-        this.homephone = homephone;
-        this.mobilephone = mobilephone;
-        this.email = email;
-        this.group = group;
-    }
+    private int id = Integer.MAX_VALUE;
+    private String name;
+    private String patronymic;
+    private String surname;
+    private String nick;
+    private String company;
+    private String address;
+    private String homephone;
+    private String mobilephone;
+    private String email;
+    private String group;
 
     public int getId() { return id; }
+
+
+    public ContactData withId(int id) {
+        this.id = id;
+        return this;}
+
+    public ContactData withName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public ContactData withPatronymic(String patronymic) {
+        this.patronymic = patronymic;
+        return this;
+    }
+
+    public ContactData withSurname(String surname) {
+        this.surname = surname;
+        return this;
+    }
+
+    public ContactData withNick(String nick) {
+        this.nick = nick;
+        return this;
+    }
+
+    public ContactData withCompany(String company) {
+        this.company = company;
+        return this;
+    }
+
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
+    public ContactData withHomephone(String homephone) {
+        this.homephone = homephone;
+        return this;
+    }
+
+    public ContactData withMobilephone(String mobilephone) {
+        this.mobilephone = mobilephone;
+        return this;
+    }
+
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
 
     public String getName() {
         return name;
@@ -85,7 +113,6 @@ public class ContactData {
         return group;
     }
 
-    public void setId(int id) { this.id = id;}
 
     @Override
     public boolean equals(Object o) {

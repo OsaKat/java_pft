@@ -15,7 +15,8 @@ public class ContactModificationTests extends TestBase {
     public void ensurePreconditions() {
         app.goTo().gotoHomePage();
         if (!app.getContactHelper().isThereAContact()) {
-            app.getContactHelper().create(new ContactData("Иван", "Петрович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", "test1"));
+            app.getContactHelper().create(new ContactData()
+                    .withName("Иван").withPatronymic("Петрович").withSurname("Тестовый").withNick("Тестик").withCompany("ООО \"Рога и копыта\"").withAddress("190000 Москва, Арбат, 5").withHomephone("84951345689").withMobilephone("891601204875").withEmail("test@test.ru").withGroup("test1"));
             app.goTo().gotoHomePage();
         }
     }
@@ -25,7 +26,7 @@ public class ContactModificationTests extends TestBase {
         List<ContactData> before = app.getContactHelper().list();
         int index = before.size() - 1;
         app.getContactHelper().editContact(index);
-        ContactData contact = new ContactData(before.get(index).getId(), "Иван", "Иванович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", null);
+        ContactData contact = new ContactData().withId(before.get(index).getId()).withName("Иван").withPatronymic("Петрович").withSurname("Тестовый").withNick("Тестик").withCompany("ООО \"Рога и копыта\"").withAddress("190000 Москва, Арбат, 5").withHomephone("84951345689").withMobilephone("891601204875").withEmail("test@test.ru").withGroup("test1").withGroup(null);
         app.getContactHelper().fillContactForm(contact);
         app.getContactHelper().updateContact();
         app.goTo().gotoHomePage();
