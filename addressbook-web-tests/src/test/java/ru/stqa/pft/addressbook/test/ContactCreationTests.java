@@ -17,13 +17,12 @@ public class ContactCreationTests extends TestBase {
                 .withName("Иван").withPatronymic("Петрович").withSurname("Тестовый").withNick("Тестик").withCompany("ООО \"Рога и копыта\"").withAddress("190000 Москва, Арбат, 5").withHomephone("84951345689").withMobilephone("891601204875").withEmail("test@test.ru").withGroup("test1");
         app.contact().create(contact);
         app.goTo().gotoHomePage();
+        assertThat(app.contact().count(), equalTo(before.size() + 1));
         Contacts after = app.contact().all();
         assertThat(after.size(),  equalTo(before.size() + 1));
-
         assertThat(after, equalTo(
                 before.withAdded(contact.withId(after.stream().mapToInt((c)-> c.getId()).max().getAsInt()))));
 
     }
-
 
 }
