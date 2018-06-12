@@ -95,9 +95,10 @@ public class ContactHelper extends HelperBase {
         String surname = wd.findElement(By.name("lastname")).getAttribute("value");
         String homephone = wd.findElement(By.name("home")).getAttribute("value");
         String mobilephone = wd.findElement(By.name("mobile")).getAttribute("value");
+        String workphone = wd.findElement(By.name("work")).getAttribute("value");
         wd.navigate().back();
         return new ContactData()
-                .withId(contact.getId()).withName(name).withSurname(surname).withHomephone(homephone).withMobilephone(mobilephone);
+                .withId(contact.getId()).withName(name).withSurname(surname).withHomephone(homephone).withMobilephone(mobilephone).withWorkphone(workphone);
     }
 
 
