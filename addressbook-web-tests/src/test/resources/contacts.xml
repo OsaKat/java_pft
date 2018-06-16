@@ -1,0 +1,23 @@
+<list>
+  <contact>
+    <name>Иван</name>
+    <surname>Иванов</surname>
+    <address>190000 Москва, Арбат, 5</address>
+    <mobilephone>84951345689</mobilephone>
+    <email>test@test.ru</email>
+  </contact>
+  <contact>
+    <name>Иван</name>
+    <surname>Иванов</surname>
+    <address>190000 Москва, Арбат, 5</address>
+    <mobilephone>84951345689</mobilephone>
+    <email>test@test.ru</email>
+  </contact>
+  <contact>
+    <name>Иван</name>
+    <surname>Иванов</surname>
+    <address>190000 Москва, Арбат, 5</address>
+    <mobilephone>84951345689</mobilephone>
+    <email>test@test.ru</email>
+  </contact>
+</list>
