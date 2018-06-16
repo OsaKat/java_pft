@@ -73,7 +73,7 @@ public class ContactDataGenerator {
                     .withName(String.format("Иван", i)).withSurname(String.format("Иванов", i))
                     .withAddress(String.format("190000 Москва, Арбат, 5", i))
                     .withEmail(String.format("test@test.ru", i))
-                    .withMobilephone(String.format("84951345689", i)));
+                    .withMobilephone(String.format("89161345689", i)));
         }
         return contacts;
     }

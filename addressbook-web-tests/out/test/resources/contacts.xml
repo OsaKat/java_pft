@@ -1,6 +1,5 @@
 <list>
   <contact>
-    <id>2147483647</id>
     <name>Иван</name>
     <surname>Иванов</surname>
     <address>190000 Москва, Арбат, 5</address>
@@ -8,7 +7,6 @@
     <email>test@test.ru</email>
   </contact>
   <contact>
-    <id>2147483647</id>
     <name>Иван</name>
     <surname>Иванов</surname>
     <address>190000 Москва, Арбат, 5</address>
@@ -16,63 +14,6 @@
     <email>test@test.ru</email>
   </contact>
   <contact>
-    <id>2147483647</id>
-    <name>Иван</name>
-    <surname>Иванов</surname>
-    <address>190000 Москва, Арбат, 5</address>
-    <mobilephone>84951345689</mobilephone>
-    <email>test@test.ru</email>
-  </contact>
-  <contact>
-    <id>2147483647</id>
-    <name>Иван</name>
-    <surname>Иванов</surname>
-    <address>190000 Москва, Арбат, 5</address>
-    <mobilephone>84951345689</mobilephone>
-    <email>test@test.ru</email>
-  </contact>
-  <contact>
-    <id>2147483647</id>
-    <name>Иван</name>
-    <surname>Иванов</surname>
-    <address>190000 Москва, Арбат, 5</address>
-    <mobilephone>84951345689</mobilephone>
-    <email>test@test.ru</email>
-  </contact>
-  <contact>
-    <id>2147483647</id>
-    <name>Иван</name>
-    <surname>Иванов</surname>
-    <address>190000 Москва, Арбат, 5</address>
-    <mobilephone>84951345689</mobilephone>
-    <email>test@test.ru</email>
-  </contact>
-  <contact>
-    <id>2147483647</id>
-    <name>Иван</name>
-    <surname>Иванов</surname>
-    <address>190000 Москва, Арбат, 5</address>
-    <mobilephone>84951345689</mobilephone>
-    <email>test@test.ru</email>
-  </contact>
-  <contact>
-    <id>2147483647</id>
-    <name>Иван</name>
-    <surname>Иванов</surname>
-    <address>190000 Москва, Арбат, 5</address>
-    <mobilephone>84951345689</mobilephone>
-    <email>test@test.ru</email>
-  </contact>
-  <contact>
-    <id>2147483647</id>
-    <name>Иван</name>
-    <surname>Иванов</surname>
-    <address>190000 Москва, Арбат, 5</address>
-    <mobilephone>84951345689</mobilephone>
-    <email>test@test.ru</email>
-  </contact>
-  <contact>
-    <id>2147483647</id>
     <name>Иван</name>
     <surname>Иванов</surname>
     <address>190000 Москва, Арбат, 5</address>
