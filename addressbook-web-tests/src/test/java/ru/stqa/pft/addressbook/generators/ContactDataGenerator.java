@@ -4,7 +4,6 @@ import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
 import com.beust.jcommander.ParameterException;
 import com.thoughtworks.xstream.XStream;
-import com.thoughtworks.xstream.annotations.XStreamAlias;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.io.File;
@@ -38,7 +37,8 @@ public class ContactDataGenerator {
     }
 
     private void run() throws IOException {
-        List<ContactData> contacts = generateContacts(count);if (format.equals("csv")) {
+        List<ContactData> contacts = generateContacts(count);
+        if (format.equals("csv")) {
             saveAsCsv(contacts, new File(file));
         } else if (format.equals("xml")) {
             saveAsXml(contacts, new File(file));
@@ -60,7 +60,7 @@ public class ContactDataGenerator {
         System.out.println(new File(".").getAbsolutePath());
         Writer writer = new FileWriter(file);
         for (ContactData contact : contacts) {
-            writer.write(String.format("%s;%s;%s;%s;%s\n", contact.getName(), contact.getSurname(), contact.getAddress(), contact.getEmail(), contact.getMobilephone()));
+            writer.write(String.format("%s;%s;%s;%s;%s;%s\n", contact.getName(), contact.getSurname(), contact.getAddress(), contact.getEmail(), contact.getMobilephone(), contact.getGroup()));
         }
         writer.close();
 
@@ -70,10 +70,11 @@ public class ContactDataGenerator {
         List<ContactData> contacts = new ArrayList<ContactData>();
         for (int i = 0; i < count; i++) {
             contacts.add(new ContactData()
-                    .withName(String.format("Иван", i)).withSurname(String.format("Иванов", i))
+                    .withName(String.format("Иван", i)).withSurname(String.format("Тестовый", i))
                     .withAddress(String.format("190000 Москва, Арбат, 5", i))
                     .withEmail(String.format("test@test.ru", i))
-                    .withMobilephone(String.format("89161345689", i)));
+                    .withMobilephone(String.format("89161345689", i))
+                    .withGroup(String.format("test1", i)));
         }
         return contacts;
     }
