@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.pft.addressbook.test.ContactCreationTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-06-17T11:10:37" hostname="Katya" time="47.504">
+<testsuite name="ru.stqa.pft.addressbook.test.ContactCreationTests" tests="4" skipped="0" failures="0" errors="0" timestamp="2018-06-18T18:25:22" hostname="Katya" time="22.099">
   <properties/>
-  <testcase name="testContactCreation[0](ContactData{id=0, name='Р�РІР°РЅ', surname='РўРµСЃС‚РѕРІС‹Р№'})" classname="ru.stqa.pft.addressbook.test.ContactCreationTests" time="15.205"/>
-  <testcase name="testContactCreation[1](ContactData{id=0, name='Р�РІР°РЅ', surname='РўРµСЃС‚РѕРІС‹Р№'})" classname="ru.stqa.pft.addressbook.test.ContactCreationTests" time="4.278"/>
-  <testcase name="testContactCreation[2](ContactData{id=0, name='Р�РІР°РЅ', surname='РўРµСЃС‚РѕРІС‹Р№'})" classname="ru.stqa.pft.addressbook.test.ContactCreationTests" time="4.57"/>
-  <testcase name="testContactCreation2" classname="ru.stqa.pft.addressbook.test.ContactCreationTests" time="23.251"/>
-  <system-out><![CDATA[]]></system-out>
+  <testcase name="testContactCreation[0](ContactData{id=0, name='Иван', surname='Тестовый'})" classname="ru.stqa.pft.addressbook.test.ContactCreationTests" time="6.368"/>
+  <testcase name="testContactCreation[1](ContactData{id=0, name='Иван', surname='Тестовый'})" classname="ru.stqa.pft.addressbook.test.ContactCreationTests" time="5.424"/>
+  <testcase name="testContactCreation[2](ContactData{id=0, name='Иван', surname='Тестовый'})" classname="ru.stqa.pft.addressbook.test.ContactCreationTests" time="4.708"/>
+  <testcase name="testContactCreation2" classname="ru.stqa.pft.addressbook.test.ContactCreationTests" time="5.599"/>
+  <system-out><![CDATA[21:25:22.294 [Test worker] INFO  r.stqa.pft.addressbook.test.TestBase - Start test testContactCreationwith parameters [ContactData{id=0, name='Иван', surname='Тестовый'}]
+]]></system-out>
   <system-err><![CDATA[Security framework of XStream not initialized, XStream is probably vulnerable.
 ]]></system-err>
 </testsuite>

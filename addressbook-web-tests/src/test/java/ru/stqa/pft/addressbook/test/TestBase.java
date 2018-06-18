@@ -1,6 +1,5 @@
 package ru.stqa.pft.addressbook.test;
 
-import org.omg.CORBA.Object;
 import org.openqa.selenium.remote.BrowserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,11 +32,11 @@ public class TestBase {
 
     @BeforeMethod
     public void logTestStart(Method m, Object[] p) {
-        logger.info("Start test " + m.getName() + " with parameters " + Arrays.asList(p));
+        logger.info("Start test " + m.getName() + "with parameters " + Arrays.asList(p));
     }
 
     @AfterMethod (alwaysRun = true)
-    public void logTestStop(Method m) {
-        logger.info("Stop test " + m.getName());
+    public void logTestStop(Method m, Object[] p) {
+        logger.info("Stop test " + m.getName() + "with parameters " + Arrays.asList(p));
     }
 }
