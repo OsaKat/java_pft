@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.model;
 
+import com.google.gson.annotations.Expose;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
@@ -15,40 +16,67 @@ public class ContactData {
     @XStreamOmitField
     @Id
     private int id = Integer.MAX_VALUE;
+
+    @Expose
     @Column(name = "firstname")
     private String name;
+
+    @Expose
     @Column(name = "middlename")
     private String patronymic;
+
+    @Expose
     @Column(name = "lastname")
     private String surname;
+
+
     @Column(name = "nickname")
     private String nick;
+
     private String company;
+
+    @Expose
     @Type(type = "text")
     private String address;
+
+    @Expose
     @Column(name = "home")
     @Type(type = "text")
     private String homephone;
+
+    @Expose
     @Column(name = "mobile")
     @Type(type = "text")
     private String mobilephone;
+
+    @Expose
     @Type(type = "text")
     @Column(name = "work")
     private String workphone;
+
     @Transient
     private String allPhones;
+
+    @Expose
     @Type(type = "text")
     private String email;
+
+    @Expose
     @Type(type = "text")
     private String email2;
+
+    @Expose
     @Type(type = "text")
     private String email3;
+
     @Transient
     private String allEmails;
+
     @Transient
     private String group;
+
     @Type(type = "text")
-    private String photo;
+    private String photo = "src/test/resources/39852670.jpg";
 
     public ContactData withId(int id) {
         this.id = id;
