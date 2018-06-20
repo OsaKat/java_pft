@@ -81,7 +81,10 @@ public class ContactHelper extends HelperBase {
         type(By.name("address"), contactData.getAddress());
         type(By.name("home"), contactData.getHomephone());
         type(By.name("mobile"), contactData.getMobilephone());
+        type(By.name("work"), contactData.getWorkphone());
         type(By.name("email"), contactData.getEmail());
+        type(By.name("email2"), contactData.getEmail());
+        type(By.name("email3"), contactData.getEmail());
     }
 
     public void create(ContactData contact) {

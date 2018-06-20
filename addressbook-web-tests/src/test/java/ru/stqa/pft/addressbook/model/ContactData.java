@@ -201,8 +201,6 @@ public class ContactData {
         return new File(photo);
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -210,14 +208,26 @@ public class ContactData {
         ContactData that = (ContactData) o;
         return id == that.id &&
                 Objects.equals(name, that.name) &&
-                Objects.equals(surname, that.surname);
+                Objects.equals(patronymic, that.patronymic) &&
+                Objects.equals(surname, that.surname) &&
+                Objects.equals(nick, that.nick) &&
+                Objects.equals(company, that.company) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(homephone, that.homephone) &&
+                Objects.equals(mobilephone, that.mobilephone) &&
+                Objects.equals(workphone, that.workphone) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(email2, that.email2) &&
+                Objects.equals(email3, that.email3);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(id, name, surname);
+        return Objects.hash(id, name, patronymic, surname, nick, company, address, homephone, mobilephone, workphone, email, email2, email3);
     }
+
+
 
     @Override
     public String toString() {
