@@ -57,7 +57,7 @@ public class ContactCreationTests extends TestBase {
                 .withName("Иван").withPatronymic("Петрович").withSurname("Тестовый")
                 .withNick("Тестик").withCompany("ООО \"Рога и копыта\"").withAddress("190000 Москва, Арбат, 5")
                 .withHomephone("84951345689").withMobilephone("891601204875")
-                .withEmail("test@test.ru").withPhoto(photo).withGroup("test1"), true);
+                .withEmail("test@test.ru").withGroup("test1"), true);
         app.contact().submitContactCreation();
         app.goTo().gotoHomePage();
     }

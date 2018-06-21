@@ -157,6 +157,18 @@ public class ContactData {
         return this;
     }
 
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", address='" + address + '\'' +
+                ", mobilephone='" + mobilephone + '\'' +
+                ", email='" + email + '\'' +
+                ", group='" + group + '\'' +
+                '}';
+    }
+
     public ContactData withPhoto(File photo) {
         this.photo = photo.getPath();
         return this;
@@ -255,15 +267,5 @@ public class ContactData {
         return Objects.hash(id, name, patronymic, surname, nick, company, address, homephone, mobilephone, workphone, email, email2, email3);
     }
 
-
-
-    @Override
-    public String toString() {
-        return "ContactData{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                '}';
-    }
 
 }
