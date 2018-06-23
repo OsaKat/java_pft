@@ -3,9 +3,11 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.testng.Assert;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.HashSet;
 import java.util.List;
@@ -34,9 +36,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("email3"), contactData.getEmail3());
 
         if (creation) {
-            new org.openqa.selenium.support.ui.Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
-        } else {
-            Assert.assertFalse(isElementPresent(By.name("new_group")));
+            //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
         }
 
     }
@@ -116,7 +116,7 @@ public class ContactHelper extends HelperBase {
 
     public void modify(ContactData contact) {
         gotoModificationContactById(contact.getId());
-        fillContactForm(contact);
+        fillContactForm(contact, false);
         submitContactCreation();
         contactCashe = null;
         returnHomePage("home");
@@ -127,6 +127,14 @@ public class ContactHelper extends HelperBase {
         selectContactById(contact.getId());
         deleteContactfromHomePage();
         contactCashe = null;
+    }
+
+    public void selectGroupListAddTo(GroupData group) {
+        new Select(wd.findElement(By.name("to_group"))).selectByVisibleText(group.getName());
+    }
+
+    public void addGroup() {
+        wd.findElement(By.name("add")).click();
     }
 
     public void returnHomePage(String s) {
@@ -176,6 +184,21 @@ public class ContactHelper extends HelperBase {
                     .withAddress(address).withAllEmails(allEmails).withAllPhones(allPhones));
         }
         return contacts;
+    }
+
+    public void contactAddGroup(ContactData editedContact, GroupData group) {
+        selectContactById(editedContact.getId());
+        selectGroupListAddTo(group);
+        addGroup();
+        System.out.println("added");
+    }
+
+    public ContactData searchContactForGroup(Contacts contacts, Groups groups) {
+        for (ContactData contact : contacts){
+            if (contact.getGroups().size() < groups.size())
+                return contact;
+        }
+        return null;
     }
 
 }

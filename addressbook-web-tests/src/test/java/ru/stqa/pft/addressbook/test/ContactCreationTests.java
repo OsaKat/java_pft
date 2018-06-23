@@ -5,6 +5,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -57,7 +58,7 @@ public class ContactCreationTests extends TestBase {
                 .withName("Иван").withPatronymic("Петрович").withSurname("Тестовый")
                 .withNick("Тестик").withCompany("ООО \"Рога и копыта\"").withAddress("190000 Москва, Арбат, 5")
                 .withHomephone("84951345689").withMobilephone("891601204875")
-                .withEmail("test@test.ru").withGroup("test 1"), true);
+                .withEmail("test@test.ru"));
         app.contact().submitContactCreation();
         app.goTo().gotoHomePage();
     }

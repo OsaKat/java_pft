@@ -21,7 +21,10 @@ public class ContactDeletionTests extends TestBase {
         app.goTo().gotoHomePage();
         if (app.db().contacts().size() == 0) {
             app.contact().create(new ContactData()
-                    .withName("Иван").withPatronymic("Петрович").withSurname("Тестовый").withNick("Тестик").withCompany("ООО \"Рога и копыта\"").withAddress("190000 Москва, Арбат, 5").withHomephone("84951345689").withMobilephone("891601204875").withEmail("test@test.ru").withGroup("test1"));
+                    .withName("Иван").withPatronymic("Петрович").withSurname("Тестовый")
+                    .withNick("Тестик").withCompany("ООО \"Рога и копыта\"")
+                    .withAddress("190000 Москва, Арбат, 5").withHomephone("84951345689").withMobilephone("891601204875")
+                    .withEmail("test@test.ru"));
             app.goTo().gotoHomePage();
         }
     }
