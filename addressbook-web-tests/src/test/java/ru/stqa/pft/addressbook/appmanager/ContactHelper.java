@@ -17,9 +17,7 @@ public class ContactHelper extends HelperBase {
         super(wd);
     }
 
-    public void submitContactCreation() {
-        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
-    }
+    public void submitContactCreation() { click(By.name("update"));  }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getName());
@@ -121,7 +119,7 @@ public class ContactHelper extends HelperBase {
         fillContactForm(contact);
         submitContactCreation();
         contactCashe = null;
-        returnHomePage();
+        returnHomePage("home");
 
     }
 
@@ -131,7 +129,7 @@ public class ContactHelper extends HelperBase {
         contactCashe = null;
     }
 
-    public void returnHomePage() {
+    public void returnHomePage(String s) {
         click(By.linkText("home"));
     }
 

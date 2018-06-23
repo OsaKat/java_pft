@@ -5,7 +5,7 @@
     <address>190000 Москва, Арбат, 5</address>
     <mobilephone>89161345689</mobilephone>
     <email>test@test.ru</email>
-    <group>test1</group>
+    <group>test 1</group>
   </contact>
   <contact>
     <name>Иван</name>
@@ -13,7 +13,7 @@
     <address>190000 Москва, Арбат, 5</address>
     <mobilephone>89161345689</mobilephone>
     <email>test@test.ru</email>
-    <group>test1</group>
+    <group>test 1</group>
   </contact>
   <contact>
     <name>Иван</name>
@@ -21,6 +21,6 @@
     <address>190000 Москва, Арбат, 5</address>
     <mobilephone>89161345689</mobilephone>
     <email>test@test.ru</email>
-    <group>test1</group>
+    <group>test 1</group>
   </contact>
 </list>

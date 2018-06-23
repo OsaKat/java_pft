@@ -37,8 +37,8 @@ public class ContactCreationTests extends TestBase {
 
     @Test(dataProvider = "validContacts")
     public void testContactCreation1(ContactData contact) {
-        app.goTo().gotoHomePage();
         Contacts before = app.db().contacts();
+        app.goTo().gotoHomePage();
         app.contact().create(contact);
         app.goTo().gotoHomePage();
         assertThat(app.contact().count(), equalTo(before.size() + 1));
@@ -57,7 +57,7 @@ public class ContactCreationTests extends TestBase {
                 .withName("Иван").withPatronymic("Петрович").withSurname("Тестовый")
                 .withNick("Тестик").withCompany("ООО \"Рога и копыта\"").withAddress("190000 Москва, Арбат, 5")
                 .withHomephone("84951345689").withMobilephone("891601204875")
-                .withEmail("test@test.ru").withGroup("test1"), true);
+                .withEmail("test@test.ru").withGroup("test 1"), true);
         app.contact().submitContactCreation();
         app.goTo().gotoHomePage();
     }

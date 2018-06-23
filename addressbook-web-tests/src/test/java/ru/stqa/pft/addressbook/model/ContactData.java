@@ -232,12 +232,12 @@ public class ContactData {
     @Override
     public String toString() {
         return "ContactData{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", address='" + address + '\'' +
                 ", mobilephone='" + mobilephone + '\'' +
                 ", email='" + email + '\'' +
-                ", group='" + group + '\'' +
                 '}';
     }
 
@@ -246,21 +246,18 @@ public class ContactData {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         ContactData that = (ContactData) o;
-        return Objects.equals(name, that.name) &&
+        return id == that.id &&
+                Objects.equals(name, that.name) &&
                 Objects.equals(surname, that.surname) &&
                 Objects.equals(address, that.address) &&
                 Objects.equals(mobilephone, that.mobilephone) &&
-                Objects.equals(email, that.email) &&
-                Objects.equals(group, that.group);
+                Objects.equals(email, that.email);
     }
 
     @Override
     public int hashCode() {
 
-        return Objects.hash(name, surname, address, mobilephone, email, group);
+        return Objects.hash(id, name, surname, address, mobilephone, email);
     }
-
-
-
 
 }
