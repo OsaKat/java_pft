@@ -17,7 +17,7 @@ public class ContactHelper extends HelperBase {
         super(wd);
     }
 
-    public void submitContactCreation() { click(By.name("update"));  }
+    public void submitContactCreation() { wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click(); }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getName());
