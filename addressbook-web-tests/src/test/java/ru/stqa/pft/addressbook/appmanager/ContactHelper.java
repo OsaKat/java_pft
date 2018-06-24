@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
 import ru.stqa.pft.addressbook.model.GroupData;
@@ -19,7 +20,9 @@ public class ContactHelper extends HelperBase {
         super(wd);
     }
 
-    public void submitContactCreation() { wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click(); }
+    public void submitContactCreation() {
+        wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+    }
 
     public void fillContactForm(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getName());
@@ -36,7 +39,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("email3"), contactData.getEmail3());
 
         if (creation) {
-            //new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
         }
 
     }
@@ -54,7 +57,7 @@ public class ContactHelper extends HelperBase {
         wd.findElement(By.xpath("//a[@href='edit.php?id=" + id + "']")).click();
     }
 
-    public void initContactModificationById (int id) {
+    public void initContactModificationById(int id) {
         wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id))).click();
     }
 
@@ -89,7 +92,7 @@ public class ContactHelper extends HelperBase {
 
     public void create(ContactData contact) {
         initContactCreation();
-        fillContactForm(contact,true);
+        fillContactForm(contact, true);
         submitContactCreation();
         contactCashe = null;
     }
@@ -159,7 +162,7 @@ public class ContactHelper extends HelperBase {
 
         contactCashe = new Contacts();
         List<WebElement> elements = wd.findElements(By.name("entry"));
-        for (WebElement element : elements){
+        for (WebElement element : elements) {
             List<WebElement> list = wd.findElements(By.cssSelector("td"));
             String name = list.get(2).getText();
             String surname = list.get(1).getText();
@@ -172,7 +175,7 @@ public class ContactHelper extends HelperBase {
     public Set<ContactData> all2() {
         Set<ContactData> contacts = new HashSet<ContactData>();
         List<WebElement> rows = wd.findElements(By.name("entry"));
-        for (WebElement row : rows){
+        for (WebElement row : rows) {
             List<WebElement> cells = row.findElements(By.tagName("td"));
             int id = Integer.parseInt(cells.get(0).findElement(By.tagName("input")).getAttribute("value"));
             String surname = cells.get(1).getText();
@@ -203,10 +206,44 @@ public class ContactHelper extends HelperBase {
         return null;
     }
 
+    public void deleteFromGroup(ContactData contact, GroupData group) {
+        selectGroupList(group);
+        selectContactById(contact.getId());
+        removeFromGroup(group);
+    }
+
+    private void removeFromGroup(GroupData group) {
+        Assert.assertEquals(wd.findElement(By.name("remove")).getAttribute("value"), "Remove from \"" + group.getName() + "\"");
+        wd.findElement(By.name("remove")).click();
+    }
+
+    private void selectGroupList(GroupData group) {
+        new Select(wd.findElement(By.name("group"))).selectByVisibleText(group.getName());
+    }
+
+    public GroupData groupForContactDel(Contacts contacts, Groups groups) {
+        for (GroupData g : groups) {
+            for (ContactData c : contacts) {
+                if (c.getGroups().contains(g)) {
+                    return g;
+                }
+            }
+        }
+        return null;
+    }
+
     public ContactData searchContactForGroup(Contacts contacts, Groups groups) {
-        for (ContactData contact : contacts){
+        for (ContactData contact : contacts) {
             if (contact.getGroups().size() < groups.size())
                 return contact;
+        }
+        return null;
+    }
+
+    public ContactData contactForDel(Contacts contacts, GroupData group) {
+        for (ContactData c : contacts) {
+            if (c.getGroups().contains(group))
+                return c;
         }
         return null;
     }

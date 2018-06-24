@@ -162,7 +162,6 @@ public class ContactData {
         return this;
     }
 
-
     public int getId() { return id; }
 
     public String getName() {
@@ -229,6 +228,11 @@ public class ContactData {
         return new File(photo);
     }
 
+    public ContactData inGroup(GroupData group) {
+        groups.add(group);
+        return this;
+    }
+
     @Override
     public String toString() {
         return "ContactData{" +
@@ -260,8 +264,4 @@ public class ContactData {
         return Objects.hash(id, name, surname, address, mobilephone, email);
     }
 
-    public ContactData inGroup(GroupData group) {
-        groups.add(group);
-        return this;
-    }
 }
