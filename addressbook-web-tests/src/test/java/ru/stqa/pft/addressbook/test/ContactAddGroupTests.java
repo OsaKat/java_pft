@@ -32,11 +32,12 @@ public class ContactAddGroupTests extends TestBase {
         }
     }
 
-    @Test (enabled = false)
+    @Test (enabled = true)
     public void testContactAddGroup() {
         Contacts contacts = app.db().contacts();
         Groups groups = app.db().groups();
         ContactData editedContact = app.contact().searchContactForGroup(contacts, groups);
+        GroupData group = app.contact().groupForContact(editedContact, groups);
         ContactData contactBefore = app.db().contact(editedContact.getId());
         app.goTo().gotoHomePage();
         app.contact().contactAddGroup(editedContact, group);

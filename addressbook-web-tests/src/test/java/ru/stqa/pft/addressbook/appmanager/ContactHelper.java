@@ -193,6 +193,16 @@ public class ContactHelper extends HelperBase {
         System.out.println("added");
     }
 
+    public GroupData groupForContact(ContactData contact, Groups groups) {
+        for (GroupData g : groups) {
+            if (!contact.getGroups().contains(g)) {
+                return g;
+            }
+
+        }
+        return null;
+    }
+
     public ContactData searchContactForGroup(Contacts contacts, Groups groups) {
         for (ContactData contact : contacts){
             if (contact.getGroups().size() < groups.size())
