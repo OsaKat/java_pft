@@ -18,7 +18,7 @@ public class ContactPhoneTests extends TestBase {
         if (app.contact().all().size() == 0) {
             app.contact().create(new ContactData()
                     .withName("Иван").withSurname("Тестовый").withAddress("190000 Москва, Арбат, 5")
-                    .withHomephone("84951345689").withMobilephone("89160120487").withWorkphone("84991120487"));
+                    .withHomephone("84951345689").withMobilephone("89160120487").withWorkphone("84991120487"), true);
             app.goTo().gotoHomePage();
         }
     }

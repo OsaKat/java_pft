@@ -27,7 +27,7 @@ public class ContactAddGroupTests extends TestBase {
             app.contact().create(new ContactData()
                     .withName("Иван").withSurname("Тестовый")
                     .withAddress("190000 Москва, Арбат, 5").withMobilephone("891601204875")
-                    .withEmail("test@test.ru"));
+                    .withEmail("test@test.ru"), true);
             app.goTo().gotoHomePage();
         }
     }

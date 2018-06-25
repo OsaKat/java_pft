@@ -14,7 +14,7 @@ public class ContactAddressTests extends TestBase {
         app.goTo().gotoHomePage();
         if (app.contact().all().size() == 0) {
             app.contact().create(new ContactData()
-                    .withName("Иван").withSurname("Тестовый").withAddress("190000 Москва, Арбат, 5"));
+                    .withName("Иван").withSurname("Тестовый").withAddress("190000 Москва, Арбат, 5"), true);
             app.goTo().gotoHomePage();
         }
     }

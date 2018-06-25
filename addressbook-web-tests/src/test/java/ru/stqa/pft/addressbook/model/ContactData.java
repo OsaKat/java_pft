@@ -74,6 +74,9 @@ public class ContactData {
     @Transient
     private String allEmails;
 
+    @Transient
+    private String group;
+
     @Type(type = "text")
     private String photo = "src/test/resources/39852670.jpg";
 
@@ -162,6 +165,11 @@ public class ContactData {
         return this;
     }
 
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
+    }
+
     public int getId() { return id; }
 
     public String getName() {
@@ -222,6 +230,10 @@ public class ContactData {
 
     public Groups getGroups() {
         return new Groups(groups);
+    }
+
+    public String getGroup() {
+        return group;
     }
 
     public File getPhoto() {
