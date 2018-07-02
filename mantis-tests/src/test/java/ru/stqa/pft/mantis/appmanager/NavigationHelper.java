@@ -9,17 +9,15 @@ public class NavigationHelper extends BaseHelper {
     }
 
     public void manageUser() throws InterruptedException {
-        click(By.linkText("Manage"));
-        click(By.linkText("Manage Users"));
-        Thread.sleep(900);
+        click(By.linkText("управление"));
+        click(By.linkText("Управление пользователями"));
     }
 
     public void clickUser(String username) throws InterruptedException {
         click(By.linkText(username));
-        Thread.sleep(100);
     }
 
     public void resetPassword() {
-        click(By.cssSelector("input[value='Reset Password']"));
+        click(By.cssSelector("input.btn"));
     }
 }

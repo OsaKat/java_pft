@@ -8,11 +8,11 @@ public class LoginHelper extends BaseHelper {
     }
 
     public void log(String username, String password) throws InterruptedException {
-        wd.get(app.getProperty("webUrl"));
+        wd.get(app.getProperty("web.baseUrl"));
         type(By.name("username"), username);
-        click(By.cssSelector("input[value='Login']"));
+        click(By.cssSelector("input.width-40"));
         type(By.name("password"), password);
-        click(By.cssSelector("input[value='Login']"));
+        click(By.cssSelector("input.width-40"));
     }
 
     public void finish(String confLink, String pass1) throws InterruptedException {
