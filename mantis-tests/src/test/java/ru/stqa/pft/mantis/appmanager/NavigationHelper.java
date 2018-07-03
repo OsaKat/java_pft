@@ -18,6 +18,6 @@ public class NavigationHelper extends BaseHelper {
     }
 
     public void resetPassword() {
-        click(By.cssSelector("input.btn"));
+        click(By.xpath("//form[@id='manage-user-reset-form']/fieldset/span/input"));
     }
 }
