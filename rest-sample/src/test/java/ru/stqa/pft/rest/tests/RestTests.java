@@ -24,14 +24,14 @@ public class RestTests extends TestBase {
 
     @Test
     public void testFixed() throws IOException {
-        int idIssue = 1;
+        int idIssue = 4;
         skipIfNotFixed(idIssue);
         assertFalse(isIssueOpen(idIssue));
     }
 
     @Test
     public void testNotFixed() throws IOException {
-        int idIssue = 2;
+        int idIssue = 26;
         skipIfNotFixed(idIssue);
         assertTrue(isIssueOpen(idIssue));
     }

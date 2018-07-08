@@ -22,9 +22,9 @@ public class TestBase {
         JsonElement issues = parsed.getAsJsonObject().get("issues");
         Set<Issue> iss = new Gson().fromJson(issues, new TypeToken<Set<Issue>>() {
         }.getType());
-        return (iss.iterator().next().getStatus().equals("Open")
-                || iss.iterator().next().getStatus().equals("In Progress")
-                || iss.iterator().next().getStatus().equals("Re-opened")
+        return (iss.iterator().next().getState_name().equals("Open")
+                || iss.iterator().next().getState_name().equals("In Progress")
+                || iss.iterator().next().getState_name().equals("Re-opened")
         );
     }
 

@@ -32,7 +32,7 @@ public class RestAssuredTests {
     }
 
     private Set<Issue> getIssues() throws IOException {
-        String json = RestAssured.get("http://bugify.stqa.ru/api/issues.json").asString();
+        String json = RestAssured.get("http://bugify.stqa.ru/api/issues.json?limit=100").asString();
         JsonElement parsed = new JsonParser().parse(json);
         JsonElement issues = parsed.getAsJsonObject().get("issues");
         return new Gson().fromJson(issues, new TypeToken<Set<Issue>>(){}.getType());
