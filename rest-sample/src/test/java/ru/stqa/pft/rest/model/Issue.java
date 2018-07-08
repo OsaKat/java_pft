@@ -1,4 +1,4 @@
-package ru.stqa.pft.rest;
+package ru.stqa.pft.rest.model;
 
 import java.util.Objects;
 
@@ -6,6 +6,7 @@ public class Issue {
     private int id;
     private String subject;
     private String description;
+    private String status;
 
     public int getId() {
         return id;
@@ -29,6 +30,16 @@ public class Issue {
         return description;
     }
 
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Issue withStatus(String status) {
+        this.status = status;
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -49,4 +60,5 @@ public class Issue {
         this.description = description;
         return this;
     }
+
 }
