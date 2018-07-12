@@ -1,27 +1,32 @@
 package ru.stqa.pft.addressbook.test;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
-import ru.stqa.pft.addressbook.model.Contacts;
 
-import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.MatcherAssert.assertThat;
+import java.util.Comparator;
+import java.util.HashSet;
+import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
     @Test
     public void testContactCreation() {
-        app.goTo().gotoHomePage();
-        Contacts before = app.contact().all();
-        ContactData contact = new ContactData()
-                .withName("Иван").withPatronymic("Петрович").withSurname("Тестовый").withNick("Тестик").withCompany("ООО \"Рога и копыта\"").withAddress("190000 Москва, Арбат, 5").withHomephone("84951345689").withMobilephone("891601204875").withEmail("test@test.ru").withGroup("test1");
-        app.contact().create(contact);
-        app.goTo().gotoHomePage();
-        assertThat(app.contact().count(), equalTo(before.size() + 1));
-        Contacts after = app.contact().all();
-        assertThat(after.size(),  equalTo(before.size() + 1));
-        assertThat(after, equalTo(
-                before.withAdded(contact.withId(after.stream().mapToInt((c)-> c.getId()).max().getAsInt()))));
+        app.getNavigationHelper().gotoHomePage();
+        List<ContactData> before = app.getContactHelper().getContactList();
+        app.getContactHelper().initContactCreation();
+        ContactData contact = new ContactData("Иван", "Петрович", "Тестовый", "Тестик", "ООО \"Рога и копыта\"", "190000 Москва, Арбат, 5", "84951345689", "891601204875", "test@test.ru", "test1");
+        app.getContactHelper().fillContactForm(contact);
+        app.getContactHelper().submitContactCreation();
+        app.getNavigationHelper().gotoHomePage();
+        List<ContactData> after = app.getContactHelper().getContactList();
+        Assert.assertEquals(after.size(), before.size() + 1);
+
+        before.add(contact);
+        Comparator<? super ContactData> byId = (o1, o2) -> Integer.compare(o1.getId(), o2.getId());
+        before.sort(byId);
+        after.sort(byId);
+        Assert.assertEquals(before, after);
 
     }
 
